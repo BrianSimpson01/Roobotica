@@ -11,9 +11,8 @@ listener example.
 
 ## Nodes Overview
 
-- **number_publisher**: Publishes a fixed integer value to `/number`
-- **number_counter**: Subscribes to `/number`, accumulates the value, and publishes to `/number_count`
-- **listener**: Subscribes to a string topic named `speaker`
+- **publisher**: Publishes a fixed integer value to `/number`
+ - **listener**: Subscribes to a string topic named `speaker`
 
 ---
 
