@@ -1,4 +1,5 @@
-site_name: Repositoria de robotica 
+site_name: Robotics Repository
+site_url: https://your-robotics-repo.com
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
