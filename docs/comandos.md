@@ -1,96 +1,116 @@
-#  Application of Frame Transformations
+# Application of Frame Transformations
 
 This document contains the solutions to exercises on **rotations** and **homogeneous transformations** in 3D.  
-All matrices are presented in clean text form inside code blocks.
 
--------------------------------------------------
-Exercise 1
--------------------------------------------------
+---
 
-Rotation about Y_A (45°):
-+---------+-----+---------+
-|  0.707  |  0  |  0.707  |
-|    0    |  1  |    0    |
-| -0.707  |  0  |  0.707  |
-+---------+-----+---------+
+## Exercise 1
 
-Rotation about X_A (60°):
-+-----+-------+--------+
-|  1  |   0   |   0    |
-|  0  |  0.5  | -0.866 |
-|  0  | 0.866 |  0.5   |
-+-----+-------+--------+
+**Rotation about Y_A (45°):**
 
-Total rotation R = R_X(60°) * R_Y(45°):
-+---------+-------+---------+
-|  0.707  |   0   |  0.707  |
-| -0.612  |  0.5  |  0.612  |
-|  0.354  | 0.866 | -0.354  |
-+---------+-------+---------+
+$$
+\begin{bmatrix}
+0.707 & 0 & 0.707 \\
+0 & 1 & 0 \\
+-0.707 & 0 & 0.707
+\end{bmatrix}
+$$
 
+**Rotation about X_A (60°):**
 
--------------------------------------------------
-Exercise 2
--------------------------------------------------
+$$
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 0.5 & -0.866 \\
+0 & 0.866 & 0.5
+\end{bmatrix}
+$$
 
-Translation vector p_B:
-+----+
-|  5 |
-| 10 |
-|  0 |
-+----+
+**Total rotation R = R_X(60°) · R_Y(45°):**
 
-Rotation matrix R_B = R_X(30°):
-+-----+-------+-------+
-|  1  |   0   |   0   |
-|  0  | 0.866 | -0.5  |
-|  0  | 0.5   | 0.866 |
-+-----+-------+-------+
+$$
+\begin{bmatrix}
+0.707 & 0 & 0.707 \\
+-0.612 & 0.5 & 0.612 \\
+0.866 & 0.354 & -0.354
+\end{bmatrix}
+$$
 
-Homogeneous transformation T_B:
-+-----+-------+-------+----+
-|  1  |   0   |   0   |  5 |
-|  0  | 0.866 | -0.5  | 10 |
-|  0  | 0.5   | 0.866 |  0 |
-|  0  |   0   |   0   |  1 |
-+-----+-------+-------+----+
+---
 
+## Exercise 2
 
--------------------------------------------------
-Exercise 3
--------------------------------------------------
+**Translation vector p_B:**
 
-General structure:
+$$
+\begin{bmatrix}
+5 \\
+10 \\
+0
+\end{bmatrix}
+$$
 
+**Rotation matrix R_B = R_X(30°):**
+
+$$
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 0.866 & -0.5 \\
+0 & 0.5 & 0.866
+\end{bmatrix}
+$$
+
+**Homogeneous transformation T_B:**
+
+$$
+\begin{bmatrix}
+1 & 0 & 0 & 5 \\
+0 & 0.866 & -0.5 & 10 \\
+0 & 0.5 & 0.866 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+$$
+
+---
+
+## Exercise 3
+
+**General structure:**
+
+$$
 T_B =
-+-------+------+
-|  R_B  | p_B  |
-|   0   |  1   |
-+-------+------+
+\begin{bmatrix}
+R_B & p_B \\
+0 & 1
+\end{bmatrix}
+$$
 
+$$
 T_C =
-+-------+------+
-|  R_C  | p_C  |
-|   0   |  1   |
-+-------+------+
+\begin{bmatrix}
+R_C & p_C \\
+0 & 1
+\end{bmatrix}
+$$
 
-Chaining:
-T_C = T_B * T_BC
+**Chaining:**
 
+$$
+T_C = T_B \cdot T_{BC}
+$$
 
--------------------------------------------------
-General Vector Transformation
--------------------------------------------------
+---
 
-p^A = T_B * p^B
+## General Vector Transformation
 
+$$
+p^A = T_B \cdot p^B
+$$
 
--------------------------------------------------
-Conclusion
--------------------------------------------------
+---
 
-- **Exercise 1**: Demonstrates sequential rotations about different axes.  
-- **Exercise 2**: Builds a homogeneous transformation matrix with rotation and translation.  
-- **Exercise 3**: Shows chaining of transformations between frames.  
+## Conclusion
 
-This material provides a solid foundation for robotics, simulation, and computer graphics applications.
+- **Exercise 1**: Sequential rotations about different axes.  
+- **Exercise 2**: Homogeneous transformation matrix with rotation and translation.  
+- **Exercise 3**: Chaining of transformations between frames.  
