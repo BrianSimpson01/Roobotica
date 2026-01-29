@@ -57,8 +57,7 @@ T_BC =
 [ -0.5     0    0.866  2 ]  
 [  0       0    0      1 ]  
 
-Chaining:  
-T_C = T_B · T_BC  
+
 
 Final result:  
 
@@ -70,11 +69,7 @@ T_C =
 
 ---
 
-## General Vector Transformation
 
-p^A = T_B · p^B
-
----
 
 ## Conclusion
 
