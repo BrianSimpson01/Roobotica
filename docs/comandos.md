@@ -1,26 +1,19 @@
 #  Application of Frame Transformations
 
-This document contains the resolution of exercises on **rotations** and **homogeneous transformations** in 3D.  
-It presents formulas, matrices, and results for academic use.
+This document contains the solutions to exercises on **rotations** and **homogeneous transformations** in 3D.  
+All matrices are presented in clean mathematical form.
 
 ---
 
-##  Introduction
+##  Exercise 1
 
-In robotics and computer graphics, it is essential to describe the **orientation** and **position** of objects using rotation matrices and homogeneous transformations.  
-The following exercises demonstrate how to apply these mathematical tools step by step.
-
----
-
-## Exercise 1
-
-**Statement:**  
+**Given:**  
 A vector \( \mathbf{P}^A \) is rotated:
 
-1. About axis \( Y_A \) by **45°**  
-2. Then about axis \( X_A \) by **60°**
+1. About axis \( \hat{Y}_A \) by **45°**  
+2. Then about axis \( \hat{X}_A \) by **60°**
 
-### Rotation about \( Y_A \):
+### Rotation about \( \hat{Y}_A \):
 
 
 
@@ -41,7 +34,7 @@ R_Y(45^\circ) =
 
 
 
-### Rotation about \( X_A \):
+### Rotation about \( \hat{X}_A \):
 
 
 
@@ -62,7 +55,7 @@ R_X(60^\circ) =
 
 
 
-### Total rotation (order: first Y, then X):
+### Total rotation (order matters):
 
 
 
@@ -82,8 +75,8 @@ R = R_X(60^\circ) \cdot R_Y(45^\circ)
 
 ##  Exercise 2
 
-**Statement:**  
-Frame \(\{B\}\) is rotated with respect to \(\{A\}\) about \( X_A \) by **30°**.  
+**Given:**  
+Frame \(\{B\}\) is rotated with respect to \(\{A\}\) about \( \hat{X}_A \) by **30°**.  
 The translation of \(\{B\}\) from \(\{A\}\) is:
 
 
@@ -114,12 +107,17 @@ R_B = R_X(30^\circ) =
 
 
 
-### Homogeneous transformation:
+### Homogeneous transformation matrix:
 
 
 
 \[
 T_B =
+\begin{bmatrix}
+R_B & p_B \\
+0 & 1
+\end{bmatrix}
+=
 \begin{bmatrix}
 1 & 0 & 0 & 5 \\
 0 & 0.866 & -0.5 & 10 \\
@@ -134,11 +132,10 @@ T_B =
 
 ##  Exercise 3
 
-**Statement:**  
-From the figure, obtain the transformations \(T_A\) and \(T_B\).  
-(Since the figure is incomplete in the PDF, numerical values cannot be fully determined, but the general structure is shown.)
+**Given:**  
+From the figure, obtain the homogeneous transformations.
 
-### Transformation of {B} with respect to {A}:
+### Homogeneous transformation from frame {B} to {A}:
 
 
 
@@ -152,7 +149,21 @@ R_B & p_B \\
 
 
 
-### Transformation of {C} with respect to {A} (chaining):
+### Homogeneous transformation from frame {C} to {A}:
+
+
+
+\[
+T_C =
+\begin{bmatrix}
+R_C & p_C \\
+0 & 1
+\end{bmatrix}
+\]
+
+
+
+### Using chaining:
 
 
 
@@ -164,10 +175,22 @@ T_C = T_B \cdot T_{BC}
 
 ---
 
+## General Vector Transformation
+
+
+
+\[
+p^A = T_B \cdot p^B
+\]
+
+
+
+---
+
 ##  Conclusion
 
-- **Exercise 1** shows how to combine rotations in a specific order.  
-- **Exercise 2** builds a homogeneous transformation with rotation and translation.  
-- **Exercise 3** applies the concept of **chaining transformations**.  
+- **Exercise 1**: Demonstrates sequential rotations about different axes.  
+- **Exercise 2**: Builds a homogeneous transformation matrix with rotation and translation.  
+- **Exercise 3**: Shows chaining of transformations between frames.  
 
-This material serves as a foundation for robotics, simulation, and computer graphics projects.
+This material provides a solid foundation for robotics, simulation, and computer graphics applications.
