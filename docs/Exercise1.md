@@ -49,29 +49,24 @@ Homogeneous transformation T_B:
 
 ## Exercise 3
 
-General structure:
+Transformation from B to C (30° tilt + translation [3, 0, 2]):
 
-T_B =  
-[  R_B   p_B ]  
-[   0     1  ]  
-
-T_C =  
-[  R_C   p_C ]  
-[   0     1  ]  
+T_BC =  
+[  0.866   0    0.5    3 ]  
+[  0       1    0      0 ]  
+[ -0.5     0    0.866  2 ]  
+[  0       0    0      1 ]  
 
 Chaining:  
 T_C = T_B · T_BC  
 
-With the values obtained:
+Final result:  
 
-T_B =  
-[  1       0      0      5 ]  
-[  0       0.866 -0.5   10 ]  
-[  0       0.5    0.866  0 ]  
-[  0       0      0      1 ]  
-
-If T_BC is defined from the 30° inclination and prism dimensions (3, 2), then:  
-T_C = T_B · T_BC  
+T_C =  
+[  0.866   0     0.5     8     ]  
+[ -0.433   0.866 0.25    10.732 ]  
+[ -0.25    0.5   0.866   2.732 ]  
+[  0       0     0      1     ]  
 
 ---
 
@@ -85,4 +80,4 @@ p^A = T_B · p^B
 
 - **Exercise 1**: Sequential rotations about different axes.  
 - **Exercise 2**: Homogeneous transformation matrix with rotation and translation.  
-- **Exercise 3**: Chaining of transformations between frames {A}, {B}, {C}.  
+- **Exercise 3**: Final homogeneous transformation matrix for frame {C} with respect to {A}.  
