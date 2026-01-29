@@ -1,14 +1,10 @@
 # Documentación del Proyecto
 
-Bienvenido 👋  
-Esta es una **plantilla** basada en [MkDocs](https://www.mkdocs.org/) + [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) para cursos y proyectos.
+Repositorio con prácticas, apuntes y proyectos de Robótica, enfocado en el estudio del movimiento, control y programación de sistemas robóticos, integrando hardware y software como parte de la formación en Ingeniería Mecatrónica.
 
 ---
 
-## Empezar rápido (3 pasos)
-
-1. **Edita el nombre del sitio** en `mkdocs.yml`:
-   ```yaml
-   site_name: Documentación del Curso
-   theme:
-     name: material
+## informacion 
+Brian Carl Simpson y Reyes 
+195916@iberopuebla.mx
+2221040137
