@@ -26,92 +26,32 @@ listener example.
 
 import rclpy
 from rclpy.node import Node
-from example_interfaces.msg import Int64
+from example_interfaces.msg import String
 
-
-class NumberPublisher(Node):
-
-    def __init__(self):
-        super().__init__('number_publisher')
-        self.publisher_ = self.create_publisher(Int64, '/number', 10)
-        self.timer_ = self.create_timer(1.0, self.publish_number)
-        self.number_ = 7
-
-    def publish_number(self):
-        msg = Int64()
-        msg.data = self.number_
-        self.publisher_.publish(msg)
-        self.get_logger().info(f'Publishing: {msg.data}')
-
+class MyNode(Node):
+    def _init_(self):
+        super()._init_("py_test")
+        self.counter = 0
+        self.get_logger().info("ok ok")
+        self.create_timer(1.0, self.timer_callback)  # Create a timer that calls timer_callback every 1 second
+        self.publisher_ = self.create_publisher(String,'speaker',10)
+    def timer_callback(self):
+     self.get_logger().info("Timer callback called")
+     msg = String()
+     msg.data = 'hello hello : %d' % self.counter
+     self.publisher_.publish(msg) 
 
 def main(args=None):
-    rclpy.init(args=args)
-    node = NumberPublisher()
-    rclpy.spin(node)
-    node.destroy_node()
-    rclpy.shutdown()
+    rclpy.init(args=args) # Initialize rclpy
+    my_node = MyNode()  # Create an instance of the MyNode class
+    rclpy.spin(my_node)  # Keep the node running
+    rclpy.shutdown()      # Shutdown rclpy
 
-
-if __name__ == '__main__':
-    main()
+if _name_ == "_main_":
+   main()
 ```
 
----
 
-### number_counter.py
-
-```python
-#!/usr/bin/env python3
-
-import rclpy
-from rclpy.node import Node
-from example_interfaces.msg import Int64
-
-
-class NumberCounter(Node):
-
-    def __init__(self):
-        super().__init__('number_counter')
-        self.counter_ = 0
-
-        self.subscription_ = self.create_subscription(
-            Int64,
-            '/number',
-            self.callback,
-            10
-        )
-
-        self.publisher_ = self.create_publisher(
-            Int64,
-            '/number_count',
-            10
-        )
-
-    def callback(self, msg):
-        self.counter_ += msg.data
-
-        out_msg = Int64()
-        out_msg.data = self.counter_
-        self.publisher_.publish(out_msg)
-
-        self.get_logger().info(
-            f'Received: {msg.data} | Counter: {self.counter_}'
-        )
-
-
-def main(args=None):
-    rclpy.init(args=args)
-    node = NumberCounter()
-    rclpy.spin(node)
-    node.destroy_node()
-    rclpy.shutdown()
-
-
-if __name__ == '__main__':
-    main()
-```
-
----
 
 ### listener.py
 
@@ -119,7 +59,6 @@ if __name__ == '__main__':
 import rclpy
 from rclpy.node import Node
 from example_interfaces.msg import String
-
 
 class Listener(Node):
     def __init__(self):
@@ -132,8 +71,7 @@ class Listener(Node):
         )
 
     def callback(self, msg):
-        self.get_logger().info(f"Received: {msg.data}")
-
+        self.get_logger().info(f"Escuché: {msg.data}")
 
 def main(args=None):
     rclpy.init(args=args)
@@ -141,9 +79,9 @@ def main(args=None):
     rclpy.spin(node)
     rclpy.shutdown()
 
-
 if __name__ == "__main__":
     main()
+
 ```
 
 ---
@@ -151,9 +89,8 @@ if __name__ == "__main__":
 ## Execution
 
 ```bash
-ros2 run my_package number_publisher
-ros2 run my_package number_counter
-ros2 topic echo /number_count
+ros2 run brians_pkg r2d2
+ros2 run brians_pkg listener
 ```
 
 ---
@@ -161,12 +98,12 @@ ros2 topic echo /number_count
 ## Terminal Output
 
 ```text
-[INFO] [number_publisher]: Publishing: 7
-[INFO] [number_counter]: Received: 7 | Counter: 7
-[INFO] [number_publisher]: Publishing: 7
-[INFO] [number_counter]: Received: 7 | Counter: 14
-[INFO] [number_publisher]: Publishing: 7
-[INFO] [number_counter]: Received: 7 | Counter: 21
+hello hello : 0
+hello hello : 1
+
+Escuché: hello hello : 0
+Escuché: hello hello : 1
+
 ```
 
 ---
