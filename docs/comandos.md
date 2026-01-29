@@ -1,113 +1,73 @@
 # Application of Frame Transformations
 
-This document contains the solutions to exercises on **rotations** and **homogeneous transformations** in 3D.  
-
 ---
 
 ## Exercise 1
 
-**Rotation about Y_A (45°):**
+Rotation about Y_A (45°):
 
-$$
-\begin{bmatrix}
-0.707 & 0 & 0.707 \\
-0 & 1 & 0 \\
--0.707 & 0 & 0.707
-\end{bmatrix}
-$$
+[  0.707   0      0.707 ]  
+[  0       1      0     ]  
+[ -0.707   0      0.707 ]  
 
-**Rotation about X_A (60°):**
+Rotation about X_A (60°):
 
-$$
-\begin{bmatrix}
-1 & 0 & 0 \\
-0 & 0.5 & -0.866 \\
-0 & 0.866 & 0.5
-\end{bmatrix}
-$$
+[  1       0      0     ]  
+[  0       0.5   -0.866 ]  
+[  0       0.866  0.5   ]  
 
-**Total rotation R = R_X(60°) · R_Y(45°):**
+Total rotation R = R_X(60°) · R_Y(45°):
 
-$$
-\begin{bmatrix}
-0.707 & 0 & 0.707 \\
--0.612 & 0.5 & 0.612 \\
-0.866 & 0.354 & -0.354
-\end{bmatrix}
-$$
+[  0.707   0      0.707 ]  
+[ -0.612   0.5    0.612 ]  
+[  0.866   0.354 -0.354 ]  
 
 ---
 
 ## Exercise 2
 
-**Translation vector p_B:**
+Translation vector p_B:
 
-$$
-\begin{bmatrix}
-5 \\
-10 \\
-0
-\end{bmatrix}
-$$
+[  5 ]  
+[ 10 ]  
+[  0 ]  
 
-**Rotation matrix R_B = R_X(30°):**
+Rotation matrix R_B = R_X(30°):
 
-$$
-\begin{bmatrix}
-1 & 0 & 0 \\
-0 & 0.866 & -0.5 \\
-0 & 0.5 & 0.866
-\end{bmatrix}
-$$
+[  1       0      0     ]  
+[  0       0.866 -0.5   ]  
+[  0       0.5    0.866 ]  
 
-**Homogeneous transformation T_B:**
+Homogeneous transformation T_B:
 
-$$
-\begin{bmatrix}
-1 & 0 & 0 & 5 \\
-0 & 0.866 & -0.5 & 10 \\
-0 & 0.5 & 0.866 & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}
-$$
+[  1       0      0      5 ]  
+[  0       0.866 -0.5   10 ]  
+[  0       0.5    0.866  0 ]  
+[  0       0      0      1 ]  
 
 ---
 
 ## Exercise 3
 
-**General structure:**
+General structure:
 
-$$
-T_B =
-\begin{bmatrix}
-R_B & p_B \\
-0 & 1
-\end{bmatrix}
-$$
+T_B =  
+[  R_B   p_B ]  
+[   0     1  ]  
 
-$$
-T_C =
-\begin{bmatrix}
-R_C & p_C \\
-0 & 1
-\end{bmatrix}
-$$
+T_C =  
+[  R_C   p_C ]  
+[   0     1  ]  
 
-**Chaining:**
-
-$$
-T_C = T_B \cdot T_{BC}
-$$
+Chaining:  
+T_C = T_B · T_BC  
 
 ---
 
 ## General Vector Transformation
 
-$$
-p^A = T_B \cdot p^B
-$$
+p^A = T_B · p^B
 
----
 
 ## Conclusion
 
