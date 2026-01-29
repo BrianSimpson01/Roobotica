@@ -1,54 +1,95 @@
-# APPLICATION OF FRAME TRANSFORMATIONS
+#  Application of Frame Transformations
+
+This document contains the resolution of exercises on **rotations** and **homogeneous transformations** in 3D.  
+It presents formulas, matrices, and results for academic use.
+
+---
+
+##  Introduction
+
+In robotics and computer graphics, it is essential to describe the **orientation** and **position** of objects using rotation matrices and homogeneous transformations.  
+The following exercises demonstrate how to apply these mathematical tools step by step.
 
 ---
 
 ## Exercise 1
 
-**Given:**  
+**Statement:**  
 A vector \( \mathbf{P}^A \) is rotated:
 
-1. About axis \( \hat{Y}_A \) by **45°**  
-2. Then about axis \( \hat{X}_A \) by **60°**
+1. About axis \( Y_A \) by **45°**  
+2. Then about axis \( X_A \) by **60°**
 
-### Rotation about \( \hat{Y}_A \)
+### Rotation about \( Y_A \):
+
+
 
 \[
-{}^A R_Y(45^\circ) =
+R_Y(45^\circ) =
 \begin{bmatrix}
 \cos 45^\circ & 0 & \sin 45^\circ \\
 0 & 1 & 0 \\
 -\sin 45^\circ & 0 & \cos 45^\circ
 \end{bmatrix}
+=
+\begin{bmatrix}
+0.707 & 0 & 0.707 \\
+0 & 1 & 0 \\
+-0.707 & 0 & 0.707
+\end{bmatrix}
 \]
 
-### Rotation about \( \hat{X}_A \)
+
+
+### Rotation about \( X_A \):
+
+
 
 \[
-{}^A R_X(60^\circ) =
+R_X(60^\circ) =
 \begin{bmatrix}
 1 & 0 & 0 \\
 0 & \cos 60^\circ & -\sin 60^\circ \\
 0 & \sin 60^\circ & \cos 60^\circ
 \end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 0.5 & -0.866 \\
+0 & 0.866 & 0.5
+\end{bmatrix}
 \]
 
-### Total rotation (order matters)
+
+
+### Total rotation (order: first Y, then X):
+
+
 
 \[
-{}^A R = {}^A R_X(60^\circ) \cdot {}^A R_Y(45^\circ)
+R = R_X(60^\circ) \cdot R_Y(45^\circ)
+=
+\begin{bmatrix}
+0.707 & 0 & 0.707 \\
+-0.612 & 0.5 & 0.612 \\
+0.354 & 0.866 & -0.354
+\end{bmatrix}
 \]
+
+
 
 ---
 
-## Exercise 2
+##  Exercise 2
 
-**Given:**  
-Frame \(\{B\}\) is rotated with respect to \(\{A\}\) about \( \hat{X}_A \) by **30°**.
+**Statement:**  
+Frame \(\{B\}\) is rotated with respect to \(\{A\}\) about \( X_A \) by **30°**.  
+The translation of \(\{B\}\) from \(\{A\}\) is:
 
-### Translation of {B} from {A}
+
 
 \[
-{}^A \mathbf{p}_B =
+p_B =
 \begin{bmatrix}
 5 \\
 10 \\
@@ -56,79 +97,77 @@ Frame \(\{B\}\) is rotated with respect to \(\{A\}\) about \( \hat{X}_A \) by **
 \end{bmatrix}
 \]
 
-### Rotation matrix
+
+
+### Rotation matrix:
+
+
 
 \[
-{}^A R_B = {}^A R_X(30^\circ) =
+R_B = R_X(30^\circ) =
 \begin{bmatrix}
 1 & 0 & 0 \\
-0 & \cos 30^\circ & -\sin 30^\circ \\
-0 & \sin 30^\circ & \cos 30^\circ
+0 & 0.866 & -0.5 \\
+0 & 0.5 & 0.866
 \end{bmatrix}
 \]
 
-### Homogeneous transformation matrix
+
+
+### Homogeneous transformation:
+
+
 
 \[
-{}^A T_B =
-\begin{bmatrix}
-{}^A R_B & {}^A \mathbf{p}_B \\
-\mathbf{0}_{1\times3} & 1
-\end{bmatrix}
-\]
-
-### Expanded form
-
-\[
-{}^A T_B =
+T_B =
 \begin{bmatrix}
 1 & 0 & 0 & 5 \\
-0 & \cos 30^\circ & -\sin 30^\circ & 10 \\
-0 & \sin 30^\circ & \cos 30^\circ & 0 \\
+0 & 0.866 & -0.5 & 10 \\
+0 & 0.5 & 0.866 & 0 \\
 0 & 0 & 0 & 1
 \end{bmatrix}
 \]
 
+
+
 ---
 
-## Exercise 3
+##  Exercise 3
 
-From the given image:
+**Statement:**  
+From the figure, obtain the transformations \(T_A\) and \(T_B\).  
+(Since the figure is incomplete in the PDF, numerical values cannot be fully determined, but the general structure is shown.)
 
-### Homogeneous transformation from frame {B} to {A}
+### Transformation of {B} with respect to {A}:
+
+
 
 \[
-{}^A T_B =
+T_B =
 \begin{bmatrix}
-{}^A R_B & {}^A \mathbf{p}_B \\
-\mathbf{0}_{1\times3} & 1
+R_B & p_B \\
+0 & 1
 \end{bmatrix}
 \]
 
-### Homogeneous transformation from frame {C} to {A}
+
+
+### Transformation of {C} with respect to {A} (chaining):
+
+
 
 \[
-{}^A T_C =
-\begin{bmatrix}
-{}^A R_C & {}^A \mathbf{p}_C \\
-\mathbf{0}_{1\times3} & 1
-\end{bmatrix}
+T_C = T_B \cdot T_{BC}
 \]
 
-### Using chaining
 
-\[
-{}^A T_C = {}^A T_B \cdot {}^B T_C
-\]
 
 ---
 
-## General Vector Transformation
+##  Conclusion
 
-\[
-{}^A \mathbf{p} = {}^A T_B \cdot {}^B \mathbf{p}
-\]
+- **Exercise 1** shows how to combine rotations in a specific order.  
+- **Exercise 2** builds a homogeneous transformation with rotation and translation.  
+- **Exercise 3** applies the concept of **chaining transformations**.  
 
----
-
-**END OF APPLICATION**
+This material serves as a foundation for robotics, simulation, and computer graphics projects.
