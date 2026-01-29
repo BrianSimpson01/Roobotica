@@ -104,7 +104,10 @@ Escuché: hello hello : 0
 Escuché: hello hello : 1
 
 ```
+## Results
 
+Here is a screenshot of the terminal output showing the publisher and listener in action:
+![Diagrama del sistema](recursos/imgs/resultado1.png)
 ---
 
 ## Conclusion
