@@ -62,6 +62,8 @@ from example_interfaces.msg import String
 class Listener(Node):
     def __init__(self):
         super().__init__("listener")
+
+        
         self.create_subscription(
             String,
             "speaker",
@@ -69,8 +71,20 @@ class Listener(Node):
             10
         )
 
+    
+        self.publisher_ = self.create_publisher(String, "listener_response", 10)
+
     def callback(self, msg):
-        self.get_logger().info(f"Escuché: {msg.data}")
+        
+        self.get_logger().info(f"I Heard: {msg.data}")
+
+       
+        response = String()
+        response.data = f"Received: {msg.data}"
+        
+        
+        self.publisher_.publish(response)
+        self.get_logger().info(f"Sent Response: {response.data}")
 
 def main(args=None):
     rclpy.init(args=args)
