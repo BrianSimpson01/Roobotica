@@ -1,251 +1,134 @@
-# Encabezados
-
-``` codigo
-# Título H1
-## Título H2
-### Título H3
-```
-
-# Título H1
-## Título H2
-### Título H3
+# APPLICATION OF FRAME TRANSFORMATIONS
 
 ---
 
-# Énfasis y código en línea
+## Exercise 1
 
-``` codigo
-**negritas**, *cursivas*, ~~tachado~~, `código en línea`
-```
+**Given:**  
+A vector \( \mathbf{P}^A \) is rotated:
 
-**negritas**, *cursivas*, ~~tachado~~, `código en línea`
+1. About axis \( \hat{Y}_A \) by **45°**  
+2. Then about axis \( \hat{X}_A \) by **60°**
 
----
+### Rotation about \( \hat{Y}_A \)
 
-# Citas (blockquote)
+\[
+{}^A R_Y(45^\circ) =
+\begin{bmatrix}
+\cos 45^\circ & 0 & \sin 45^\circ \\
+0 & 1 & 0 \\
+-\sin 45^\circ & 0 & \cos 45^\circ
+\end{bmatrix}
+\]
 
-``` codigo
-> Esta es una cita destacada.
-> Puede tener múltiples líneas.
-```
+### Rotation about \( \hat{X}_A \)
 
-> Esta es una cita destacada.
-> Puede tener múltiples líneas.
+\[
+{}^A R_X(60^\circ) =
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & \cos 60^\circ & -\sin 60^\circ \\
+0 & \sin 60^\circ & \cos 60^\circ
+\end{bmatrix}
+\]
 
----
+### Total rotation (order matters)
 
-# Enlaces
-
-``` codigo
-[Enlace directo](https://www.iberopuebla.mx/)
-
-[Texto del enlace de referencia][doc-ref]
-
-[doc-ref]: https://www.iberopuebla.mx//docs "Título opcional"
-```
-
-[Enlace directo](https://www.iberopuebla.mx/)
-
-[Texto del enlace de referencia][doc-ref]
-
-[doc-ref]: https://www.iberopuebla.mx//docs "Título opcional"
+\[
+{}^A R = {}^A R_X(60^\circ) \cdot {}^A R_Y(45^\circ)
+\]
 
 ---
 
-# Listas: viñetas, numeradas y de tareas
+## Exercise 2
 
-``` codigo
+**Given:**  
+Frame \(\{B\}\) is rotated with respect to \(\{A\}\) about \( \hat{X}_A \) by **30°**.
 
-- Item A
-    * Subitem A.1
-    * Subitem A.2
-- Item B
-    - Subitem B.1
-    - Subitem B.2
+### Translation of {B} from {A}
 
-1.  Paso 1
-    1.  Paso 1.1
-    2.  Paso 1.2
-        1.  Paso 1.2.1
-        2.  Paso 1.2.2
-        
-- [x] Hecho
-- [ ] Pendiente
+\[
+{}^A \mathbf{p}_B =
+\begin{bmatrix}
+5 \\
+10 \\
+0
+\end{bmatrix}
+\]
 
-```
+### Rotation matrix
 
-- Item A
-    * Subitem A.1
-    * Subitem A.2
-- Item B
-    - Subitem B.1
-    - Subitem B.2
+\[
+{}^A R_B = {}^A R_X(30^\circ) =
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & \cos 30^\circ & -\sin 30^\circ \\
+0 & \sin 30^\circ & \cos 30^\circ
+\end{bmatrix}
+\]
 
----
+### Homogeneous transformation matrix
 
-1.  Paso 1
-    1.  Paso 1.1
-    2.  Paso 1.2
-        1.  Paso 1.2.1
-        2.  Paso 1.2.2
-        
-- [x] Hecho
-- [ ] Pendiente
+\[
+{}^A T_B =
+\begin{bmatrix}
+{}^A R_B & {}^A \mathbf{p}_B \\
+\mathbf{0}_{1\times3} & 1
+\end{bmatrix}
+\]
 
----
+### Expanded form
 
-# Tablas
-
-``` codigo
-| Componente | Cant. | Nota        |
-|-----------:|:-----:|-------------|
-| Sensor X   | 2     | I2C         |
-| MCU Y      | 1     | WiFi/BLE    |
-```
-
-| Componente | Cant. | Nota        |
-|-----------:|:-----:|-------------|
-| Sensor X   | 2     | I2C         |
-| MCU Y      | 1     | WiFi/BLE    |
+\[
+{}^A T_B =
+\begin{bmatrix}
+1 & 0 & 0 & 5 \\
+0 & \cos 30^\circ & -\sin 30^\circ & 10 \\
+0 & \sin 30^\circ & \cos 30^\circ & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\]
 
 ---
 
-# Imágenes
+## Exercise 3
 
-``` codigo
-![Diagrama del sistema](recursos/imgs/ibero.jpeg)
+From the given image:
 
-<!-- Control de tamaño usando HTML (cuando se requiera) -->
-<img src="../recursos/imgs/ibero.jpeg" alt="Diagrama del sistema" width="420">
-```
+### Homogeneous transformation from frame {B} to {A}
 
-![Diagrama del sistema](recursos/imgs/ibero.jpeg)
+\[
+{}^A T_B =
+\begin{bmatrix}
+{}^A R_B & {}^A \mathbf{p}_B \\
+\mathbf{0}_{1\times3} & 1
+\end{bmatrix}
+\]
 
-<img src="../recursos/imgs/ibero.jpeg" alt="Diagrama del sistema" width="420">
+### Homogeneous transformation from frame {C} to {A}
 
----
+\[
+{}^A T_C =
+\begin{bmatrix}
+{}^A R_C & {}^A \mathbf{p}_C \\
+\mathbf{0}_{1\times3} & 1
+\end{bmatrix}
+\]
 
-# PDFs (enlace y embebido)
+### Using chaining
 
-``` codigo
-[Descargar especificación (PDF)](recursos/archivos/Calendario.pdf)
-
-<!-- Embed (requiere navegador compatible) -->
-<object data="recursos/archivos/Calendario.pdf" type="application/pdf" width="100%" height="600">
-  <p>No se pudo mostrar el PDF. <a href="../recursos/archivos/Calendario.pdf">Descargar</a></p>
-</object>
-```
-
-[Descargar especificación (PDF)](recursos/archivos/Calendario.pdf)
-
-<object data="../recursos/archivos/Calendario.pdf" type="application/pdf" width="100%" height="600">
-  <p>No se pudo mostrar el PDF. <a href="../recursos/archivos/Calendario.pdf">Descargar</a></p>
-</object>
+\[
+{}^A T_C = {}^A T_B \cdot {}^B T_C
+\]
 
 ---
 
-# Admonitions (Material)
+## General Vector Transformation
 
-``` codigo
-!!! note "Nota"
-    Esto es una nota informativa.
-
-!!! tip "Sugerencia"
-    Un consejo breve para el usuario.
-
-!!! warning "Advertencia"
-    Precauciones o riesgos a considerar.
-
-??? info "Más información (colapsable)"
-    Contenido adicional que se puede expandir.
-```
-
-!!! note "Nota"
-    Esto es una nota informativa.
-
-!!! tip "Sugerencia"
-    Un consejo breve para el usuario.
-
-!!! warning "Advertencia"
-    Precauciones o riesgos a considerar.
-
-??? info "Más información (colapsable)"
-    Contenido adicional que se puede expandir.
+\[
+{}^A \mathbf{p} = {}^A T_B \cdot {}^B \mathbf{p}
+\]
 
 ---
 
-# Código con resaltado
-
-``` codigo
-```python
-def medir(canal: int) -> dict:
-    # Simulación de lectura
-    return {"canal": canal, "valor": 523, "unidad": "mV"}
-
-print(medir(1))
-```
-```
-
-```python
-def medir(canal: int) -> dict:
-    # Simulación de lectura
-    return {"canal": canal, "valor": 523, "unidad": "mV"}
-
-print(medir(1))
-```
-
----
-
-# Separador horizontal
-
-``` codigo
----
-```
-
----
-
----
-
-# Listas anidadas con código y notas
-
-``` codigo
-- **Módulo A**
-  - Función: `procesar()`
-  - Entrada:
-    - `signal` (float)
-    - `freq` (Hz)
-  - Salida:
-    - JSON con `valor`, `unidad`
-  - !!! note
-        Documenta rangos válidos y casos borde.
-```
-
-- **Módulo A**
-  - Función: `procesar()`
-  - Entrada:
-    - `signal` (float)
-    - `freq` (Hz)
-  - Salida:
-    - JSON con `valor`, `unidad`
-  - !!! note
-        Documenta rangos válidos y casos borde.
-
----
-
-# Bloques de cita con código (pseudo-logs)
-
-``` codigo
-> **Log:**
-> ```
-> [12:00:00] Init OK
-> [12:00:01] Conectando a I2C...
-> [12:00:02] Lectura: 523 mV
-> ```
-```
-
-> **Log:**
-> ```
-> [12:00:00] Init OK
-> [12:00:01] Conectando a I2C...
-> [12:00:02] Lectura: 523 mV
-> ```
+**END OF APPLICATION**
