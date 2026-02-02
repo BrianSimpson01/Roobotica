@@ -8,7 +8,7 @@ This repository is used to document **Denavit–Hartenberg (DH) frame placement*
 #  Robot 1
 
 ## Robot Photo
-![Robot 1 photo](recursos/imgs/resultado1.png)
+![Robot 1 photo](recursos/imgs/rob1.png)
 
 ## Frame Assignment / Scheme
 ![Robot 1 scheme](recursos/imgs/resultado1.png)
@@ -23,7 +23,7 @@ This repository is used to document **Denavit–Hartenberg (DH) frame placement*
 #  Robot 2
 
 ## Robot Photo
-![Robot 2 photo](recursos/imgs/resultado1.png)
+![Robot 2 photo](recursos/imgs/rob2.png)
 
 ## Frame Assignment / Scheme
 ![Robot 2 scheme](recursos/imgs/resultado1.png)
@@ -38,7 +38,7 @@ This repository is used to document **Denavit–Hartenberg (DH) frame placement*
 #  Robot 3
 
 ## Robot Photo
-![Robot 3 photo](recursos/imgs/resultado1.png)
+![Robot 3 photo](recursos/imgs/rob3.png)
 
 ## Frame Assignment / Scheme
 ![Robot 3 scheme](recursos/imgs/resultado1.png)
@@ -53,7 +53,7 @@ This repository is used to document **Denavit–Hartenberg (DH) frame placement*
 #  Robot 4
 
 ## Robot Photo
-![Robot 4 photo](recursos/imgs/resultado1.png)
+![Robot 4 photo](recursos/imgs/rob4.png)
 
 ## Frame Assignment / Scheme
 ![Robot 4 scheme](recursos/imgs/resultado1.png)
@@ -67,7 +67,7 @@ This repository is used to document **Denavit–Hartenberg (DH) frame placement*
 #  Robot 5
 
 ## Robot Photo
-![Robot 5 photo](recursos/imgs/resultado1.png)
+![Robot 5 photo](recursos/imgs/rob5.png)
 
 ## Frame Assignment / Scheme
 ![Robot 5 scheme](recursos/imgs/resultado1.png)
