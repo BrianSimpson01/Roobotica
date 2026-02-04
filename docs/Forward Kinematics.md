@@ -71,9 +71,9 @@ This repository is used to document **Denavit–Hartenberg (DH) frame placement*
 
 ## DH Table 
 ![Robot 4 DH](recursos/imgs/t4.jpeg)
-![ L1 matrix](recursos/imgs/m41.jpeg)
-![ L2 matrix](recursos/imgs/m42.jpeg)
-![ L3 matrix](recursos/imgs/m43.jpeg)
+![ matrixes ](recursos/imgs/m41.jpeg)
+![ matrixes](recursos/imgs/m42.jpeg)
+![ matrixes ](recursos/imgs/m43.jpeg)
 
 
 ---
