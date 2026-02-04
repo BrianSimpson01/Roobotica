@@ -13,8 +13,19 @@ This repository is used to document **Denavit–Hartenberg (DH) frame placement*
 ## Frame Assignment / Scheme
 ![Robot 1 scheme](recursos/imgs/d1.jpeg)
 
-## DH Table 
+## DH Table and matrixes 
 ![Robot 1 DH](recursos/imgs/t1.jpeg)
+![ L1 matrix](recursos/imgs/t1.jpeg)
+![ L2 matrix](recursos/imgs/t1.jpeg)
+![ L3 matrix](recursos/imgs/t1.jpeg)
+![ L4 matrix](recursos/imgs/t1.jpeg)
+![ L5 matrix](recursos/imgs/t1.jpeg)
+![ L6 matrix](recursos/imgs/t1.jpeg)
+
+
+
+
+
 
 
 
@@ -60,6 +71,9 @@ This repository is used to document **Denavit–Hartenberg (DH) frame placement*
 
 ## DH Table 
 ![Robot 4 DH](recursos/imgs/t4.jpeg)
+![ L1 matrix](recursos/imgs/m41.jpeg)
+![ L2 matrix](recursos/imgs/m42.jpeg)
+![ L3 matrix](recursos/imgs/m43.jpeg)
 
 
 ---
