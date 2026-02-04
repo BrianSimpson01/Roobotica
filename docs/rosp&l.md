@@ -110,18 +110,12 @@ ros2 run brians_pkg listener
 
 ## Terminal Output
 
-```text
-hello hello : 0
-hello hello : 1
+![terminal Screenshot](recursos/imgs/resultado1.png)
 
-Escuché: hello hello : 0
-Escuché: hello hello : 1
-
-```
 ## Results
 
 Here is a screenshot of the terminal output showing the publisher and listener in action:
-![Diagrama del sistema](recursos/imgs/resultado1.png)
+![Diagram results](recursos/imgs/ss.png)
 ---
 
 ## Conclusion

@@ -1,6 +1,6 @@
 # Forward Kinematics 
 
-This repository is used to document **Denavit–Hartenberg (DH) frame placement** and **homogeneous transformation matrices** for multiple robots.
+This repository is used to document **Denavit–Hartenberg (DH) frame placement** and **homogeneous transformation matrices** for diferent robots.
 
 
 ---
