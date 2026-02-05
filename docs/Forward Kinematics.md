@@ -80,6 +80,11 @@ sᵢ = sin(θᵢ)
 c₂₃ = cos(θ₂ + θ₃)  
 s₂₃ = sin(θ₂ + θ₃)  
 
+c₃ = cos(θ₃ + π/2)  
+s₃ = sin(θ₃ + π/2)  
+
+c₅ = cos(θ₅ + π/2)  
+s₅ = sin(θ₅ + π/2)  
 ---
 
 # Transformation Matrices
@@ -207,18 +212,6 @@ pz = 13 + 8*s2 + 8*s23 + d4*c23 + d6
 
 ---
 
-# End-Effector Pose
-
-```
-Pose = [ R | p ]
-       [ 0 | 1 ]
-```
-
----
-
-
-
----
 
 #  Robot 5
 
