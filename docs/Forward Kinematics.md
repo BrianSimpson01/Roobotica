@@ -221,12 +221,15 @@ pz = 13 + 8*s2 + 8*s23 + d4*c23 + d6
 ![Robot 5 scheme](recursos/imgs/d5.png)
 
 ## DH Table 
-![Robot 5 DH](recursos/imgs/t5.jpeg)
+![Robot 5 DH](recursos/imgs/t5.png)
 
 ## Matrix
-![Robot 5 Matrix](recursos/imgs/m5.jpeg)
+![Robot 5 Matrix](recursos/imgs/m5.png)
 ## Result
 ![Robot 5 Final matrix](recursos/imgs/m51.jpeg)
+![Robot 5 Final matrix](recursos/imgs/m52.jpeg)
+![Robot 5 Final matrix](recursos/imgs/m53.jpeg)
+
 
 
 
