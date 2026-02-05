@@ -41,7 +41,10 @@ This repository is used to document **Denavit–Hartenberg (DH) frame placement*
 
 ## DH Table 
 ![Robot 2 DH](recursos/imgs/t2.jpeg)
-
+## Matrix
+![Robot 2 Matrix](recursos/imgs/m2.jpeg)
+## Result
+![Robot 2 Final matrix](recursos/imgs/m21.jpeg)
 
 
 ---
