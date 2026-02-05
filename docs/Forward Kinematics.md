@@ -15,12 +15,11 @@ This repository is used to document **Denavit–Hartenberg (DH) frame placement*
 
 ## DH Table and matrixes 
 ![Robot 1 DH](recursos/imgs/t1.jpeg)
-![ L1 matrix](recursos/imgs/t1.jpeg)
-![ L2 matrix](recursos/imgs/t1.jpeg)
-![ L3 matrix](recursos/imgs/t1.jpeg)
-![ L4 matrix](recursos/imgs/t1.jpeg)
-![ L5 matrix](recursos/imgs/t1.jpeg)
-![ L6 matrix](recursos/imgs/t1.jpeg)
+
+## Matrix
+![Robot 1 Matrix](recursos/imgs/m1.jpeg)
+
+
 
 
 
@@ -59,6 +58,12 @@ This repository is used to document **Denavit–Hartenberg (DH) frame placement*
 
 ## DH Table 
 ![Robot 3 DH](recursos/imgs/t3.jpeg)
+
+## Matrix
+![Robot 3 Matrix](recursos/imgs/m3.jpeg)
+## Result
+![Robot 3 Final matrix](recursos/imgs/m31.jpeg)
+
 
 
 
@@ -226,6 +231,11 @@ pz = 13 + 8*s2 + 8*s23 + d4*c23 + d6
 
 ## DH Table 
 ![Robot 5 DH](recursos/imgs/t5.jpeg)
+
+## Matrix
+![Robot 5 Matrix](recursos/imgs/m5.jpeg)
+## Result
+![Robot 5 Final matrix](recursos/imgs/m51.jpeg)
 
 
 
