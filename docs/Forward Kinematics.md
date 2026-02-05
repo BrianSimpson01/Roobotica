@@ -19,15 +19,6 @@ This repository is used to document **Denavit–Hartenberg (DH) frame placement*
 ## Matrix
 ![Robot 1 Matrix](recursos/imgs/m1.jpeg)
 
-
-
-
-
-
-
-
-
-
 ---
 
 #  Robot 2
@@ -61,8 +52,8 @@ This repository is used to document **Denavit–Hartenberg (DH) frame placement*
 
 ## Matrix
 ![Robot 3 Matrix](recursos/imgs/m3.jpeg)
-## Result
 ![Robot 3 Final matrix](recursos/imgs/m31.jpeg)
+![Robot 3 Final matrix](recursos/imgs/m32.jpeg)
 
 
 
