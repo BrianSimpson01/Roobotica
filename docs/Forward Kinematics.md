@@ -226,9 +226,9 @@ pz = 13 + 8*s2 + 8*s23 + d4*c23 + d6
 ## Matrix
 ![Robot 5 Matrix](recursos/imgs/m5.png)
 ## Result
-![Robot 5 Final matrix](recursos/imgs/m51.jpeg)
-![Robot 5 Final matrix](recursos/imgs/m52.jpeg)
-![Robot 5 Final matrix](recursos/imgs/m53.jpeg)
+![Robot 5 Final matrix](recursos/imgs/m51.png)
+![Robot 5 Final matrix](recursos/imgs/m52.png)
+![Robot 5 Final matrix](recursos/imgs/m53.png)
 
 
 
