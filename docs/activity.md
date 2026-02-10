@@ -1,4 +1,4 @@
-# Forward Kinematics 
+# Activity
 
 This repository is used to document **Denavit–Hartenberg (DH) frame placement** for the KUKA KG6 & UR robots 
 
