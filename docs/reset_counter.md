@@ -99,6 +99,8 @@ if __name__ == "__main__":
 ros2 run brians_pkg r2d2
 ros2 run brians_pkg listener
 ros2 service call /reset_listener example_interfaces/srv/SetBool "{data: true}"
+ros2 service call /reset_listener example_interfaces/srv/SetBool "{data: false}"
+rqt_graph
 
 ```
 
