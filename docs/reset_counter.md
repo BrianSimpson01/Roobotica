@@ -139,7 +139,7 @@ rqt_graph
 ---
 
 ## Terminal Output
-in this photo you can see in the terminal on the top right corner de counter resetting
+in this photo you can see in the terminal on the top right corner de counter resetting to 1 
 ![terminal Screenshot](recursos/imgs/ter2.png)
 
 in this photo you can see that the comand went thru on the bottom left corner 
