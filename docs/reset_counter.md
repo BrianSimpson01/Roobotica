@@ -22,7 +22,7 @@ a response, and provides a service to reset the counter.
 
 ---
 
-## Source Code
+## Source Codes
 
 ### listener.py
 
@@ -90,6 +90,38 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+### number_publisher.py
+
+```python
+#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+from example_interfaces.msg import String
+
+class MyNode(Node):
+    def _init_(self):
+        super()._init_("py_test")
+        self.counter = 0
+        self.get_logger().info("ok ok")
+        self.create_timer(1.0, self.timer_callback)  # Create a timer that calls timer_callback every 1 second
+        self.publisher_ = self.create_publisher(String,'speaker',10)
+    def timer_callback(self):
+     self.get_logger().info("Timer callback called")
+     msg = String()
+     msg.data = 'hello hello : %d' % self.counter
+     self.publisher_.publish(msg) 
+
+def main(args=None):
+    rclpy.init(args=args) # Initialize rclpy
+    my_node = MyNode()  # Create an instance of the MyNode class
+    rclpy.spin(my_node)  # Keep the node running
+    rclpy.shutdown()      # Shutdown rclpy
+
+if _name_ == "_main_":
+   main()
+```
+
 
 ---
 
@@ -107,9 +139,15 @@ rqt_graph
 ---
 
 ## Terminal Output
+in this photo you can see in the terminal on the top right corner de counter resetting
+![terminal Screenshot](recursos/imgs/ter2.png)
+
+in this photo you can see that the comand went thru on the bottom left corner 
 
 ![terminal Screenshot](recursos/imgs/ter1.png)
-![terminal Screenshot](recursos/imgs/ter2.png)
+
+in this photo you can see the comand not changing the outcome of the counter do to the fact the value given is "false" 
+
 ![terminal Screenshot](recursos/imgs/ter3.png)
 
 
