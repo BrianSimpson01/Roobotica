@@ -23,7 +23,7 @@ A **Battery node** simulates battery discharge and communicates with a **LED Pan
 
 ## Source Codes
 
-### `battery.py`
+### battery.py
 
 ```python
 #!/usr/bin/env python3
@@ -77,7 +77,7 @@ if __name__ == "__main__":
 ```
 ---
     
-### `led_panel.py`
+### led_panel.py
 
 ```python
 #!/usr/bin/env python3
@@ -130,12 +130,12 @@ if __name__ == "__main__":
 ---
 ## Custom Interfaces
 
-### `Led.msg`
+### Led.msg
 
 ```text
 int32[] leds
 ```
-### `Ledset.srv`
+### Ledset.srv
 ```text
 int32 led_index
 bool state
@@ -154,20 +154,21 @@ rqt_graph
 ---
 
 ## Terminal Output
-in this photo you can see in the terminal on the top right corner de counter resetting to 1 
-![terminal Screenshot](recursos/imgs/ter2.png)
 
-in this photo you can see that the comand went thru on the bottom left corner 
+in this photo you can see the battery node and the led panel node when the battery gets to 0 it turns on the led light in the third position 
+ 
+![terminal Screenshot](recursos/imgs/l1.png)
 
-![terminal Screenshot](recursos/imgs/ter1.png)
+in this photo you can see the battery node and the led panel node when the battery is recharged it resets the led lights 
+![terminal Screenshot](recursos/imgs/l2.png)
 
-in this photo you can see the comand not changing the outcome of the counter do to the fact the value given is "false" 
+in these photos you can see the eco and the equivalent reaccion in the third terminal
 
-![terminal Screenshot](recursos/imgs/ter3.png)
+![terminal Screenshot](recursos/imgs/l3.png)
+![terminal Screenshot](recursos/imgs/l4.png)
 
 
 ## Results
 
-Here is a screenshot of the terminal output showing the publisher and listener in action:
-![Diagram results](recursos/imgs/ss2.png)
+![Diagram results](recursos/imgs/ss3.png)
 ---
