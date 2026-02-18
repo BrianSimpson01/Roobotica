@@ -75,10 +75,8 @@ def main(args=None):
 if __name__ == "__main__":
     main()
 ```
----
     
 ### led_panel.py
-
 ```python
 #!/usr/bin/env python3
 
