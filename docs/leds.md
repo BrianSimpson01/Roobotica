@@ -140,7 +140,7 @@ bool state
 ---
 bool success
 ```
----
+
 ## Execution
 
 ```bash
@@ -149,7 +149,7 @@ ros2 run brians_pkg led_panel
 rqt_graph
 
 ```
----
+
 
 ## Terminal Output
 
