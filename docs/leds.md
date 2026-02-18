@@ -75,6 +75,7 @@ def main(args=None):
 if __name__ == "__main__":
     main()
 ```
+---
     
 ### `led_panel.py`
 
@@ -126,6 +127,7 @@ def main(args=None):
 if __name__ == "__main__":
     main()
 ```
+---
 ## Custom Interfaces
 
 ### `Led.msg`
@@ -140,3 +142,32 @@ bool state
 ---
 bool success
 ```
+---
+## Execution
+
+```bash
+ros2 run brians_pkg battery
+ros2 run brians_pkg led_panel
+rqt_graph
+
+```
+---
+
+## Terminal Output
+in this photo you can see in the terminal on the top right corner de counter resetting to 1 
+![terminal Screenshot](recursos/imgs/ter2.png)
+
+in this photo you can see that the comand went thru on the bottom left corner 
+
+![terminal Screenshot](recursos/imgs/ter1.png)
+
+in this photo you can see the comand not changing the outcome of the counter do to the fact the value given is "false" 
+
+![terminal Screenshot](recursos/imgs/ter3.png)
+
+
+## Results
+
+Here is a screenshot of the terminal output showing the publisher and listener in action:
+![Diagram results](recursos/imgs/ss2.png)
+---
