@@ -321,5 +321,7 @@ rqt_graph
 ## Demo Video
 
 [full video](recursos/imgs/demo.mp4)
+## Results
+![terminal Screenshot](recursos/imgs/tur2.png)
 
 
