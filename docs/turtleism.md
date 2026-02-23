@@ -320,6 +320,6 @@ rqt_graph
 ![terminal Screenshot](recursos/imgs/tur1.png)
 ## Demo Video
 
-[Ver demo completo](recursos/imgs/demo.mp4)
+[full video](recursos/imgs/demo.mp4)
 
 
