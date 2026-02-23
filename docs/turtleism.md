@@ -320,8 +320,4 @@ rqt_graph
 ![terminal Screenshot](recursos/imgs/tur1.png)
 ## Demo Video
 
-<video width="600" controls>
-  <source src="img/demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
+![terminal video](recursos/imgs/demo.mp4)
