@@ -121,13 +121,7 @@ J =  |  a₁c₁+a₂c₁₂+a₃c₁₂₃     a₂c₁₂+a₃c₁₂₃      
 
 ---
 
-## Determinant & Singularities
+## Determinant 
 ```
 det(J) = a₁·a₂·sin(θ₂) + a₁·a₃·sin(θ₂+θ₃) + a₂·a₃·sin(θ₃) = 0
 ```
-
-| Condition | Configuration |
-|-----------|--------------|
-| θ₂ = 0° or 180° | Links a₁ and a₂ fully aligned |
-| θ₃ = 0° or 180° | Links a₂ and a₃ fully aligned |
-| All three links collinear | Complete arm stretch or fold |
