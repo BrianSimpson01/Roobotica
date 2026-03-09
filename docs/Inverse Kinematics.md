@@ -1,6 +1,10 @@
 # IK
 
 ---
+## robot 
+![Robot](recursos/imgs/robik.jpeg)
+ ---
+
 
 ## Forward Kinematics
 
@@ -18,6 +22,10 @@ All joints rotate about Z (pointing up). All links lie in the XY plane.
 
 
 ## Inverse Kinematics — Geometric Method
+
+### Geometrical Method 
+![Top view analisis](recursos/imgs/geo1.jpeg)
+
 
 ### Step 1 — Wrist Decoupling
 
