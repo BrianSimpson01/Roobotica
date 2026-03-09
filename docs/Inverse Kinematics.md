@@ -1,4 +1,6 @@
-#  Iverse Kinematics 
+# IK
+
+---
 
 ## Forward Kinematics
 
