@@ -1,5 +1,8 @@
 # IK
 
+This repository documents **Inverse Kinematics**  for one robot, it will explain the Geometrical method to get ecuations to late get a jacobian value.
+
+---
 ---
 ## robot 
 ![Robot](recursos/imgs/robik.jpeg)
