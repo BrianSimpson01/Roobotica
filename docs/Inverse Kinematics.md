@@ -23,7 +23,7 @@ All joints rotate about Z (pointing up). All links lie in the XY plane.
 
 ## Inverse Kinematics — Geometric Method
 
-### Geometrical Method 
+### Top View Analisis
 ![Top view analisis](recursos/imgs/geo1.jpeg)
 
 
