@@ -68,14 +68,11 @@ Since θ₁ is known, collapse the 3D problem into a 2D plane using:
 r = √(x² + y²)
 ```
 
-> This follows from x²+y² = r²·cos²(θ₁) + r²·sin²(θ₁) = r²
 
 **Height above J₁** — subtract the fixed base offset:
 ```
 h = z − d₁
 ```
-
-> We subtract d₁ because joints 2 and 3 act from J₁, not from the ground.
 
 **Distance from J₁ to P:**
 ```
@@ -104,8 +101,6 @@ sin(θ₃) = ±√(1 − cos²(θ₃))
 θ₃ = atan2( ±√(1 − cos²(θ₃)) , cos(θ₃) )
 ```
 
-> **+** → elbow up
-> **−** → elbow down
 
 ---
 
@@ -129,38 +124,6 @@ sin(θ₃) = ±√(1 − cos²(θ₃))
 
 ## Position Jacobian — Geometric Method (3×3)
 
-Maps joint velocities to end-effector linear velocities:
-```
-| ẋ |        | θ̇₁ |
-| ẏ |  = Jᵥ·| θ̇₂ |
-| ż |        | θ̇₃ |
-```
-
-For each revolute joint the column is:
-```
-Jᵥᵢ = ẑᵢ₋₁ × (pₑ − pᵢ₋₁)
-```
-
----
-
-### Joint Axes
-```
-ẑ₀ = [0,    0,   1]ᵀ     
-ẑ₁ = [−s₁,  c₁,  0]ᵀ      
-ẑ₂ = [−s₁,  c₁,  0]ᵀ      
-```
-
-### Joint Positions
-```
-p₀ = [0,          0,          0          ]ᵀ
-p₁ = [0,          0,          d₁         ]ᵀ
-p₂ = [a₂·c₁·c₂,  a₂·s₁·c₂,  d₁+a₂·s₂  ]ᵀ
-pₑ = [c₁·r,       s₁·r,       d₁+a₂·s₂+a₃·s₂₃]ᵀ
-```
-
-Where **r = a₂·cos(θ₂) + a₃·cos(θ₂+θ₃)**
-
----
 
 ### Column 1 — Joint 1
 
@@ -197,8 +160,6 @@ Cross product ẑ₁ × (pₑ − p₁):
   [  s₁·(a₂·s₂ + a₃·s₂₃)  ]
   [          −r             ]
 ```
-
-> s₁² + c₁² = 1, so the last entry simplifies to −r
 
 ---
 
