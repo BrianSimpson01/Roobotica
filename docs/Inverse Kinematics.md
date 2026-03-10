@@ -79,8 +79,6 @@ h = z − d₁
 D = √(r² + h²)
 ```
 
-Now θ₂ and θ₃ form a **2R robot in the (r, h) plane**.
-
 ---
 
 ### Step 3 — Solve θ₃ (Law of Cosines)
