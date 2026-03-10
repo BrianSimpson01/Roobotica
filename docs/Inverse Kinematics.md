@@ -1,4 +1,6 @@
-# IK — Original 3R Robot
+# Inverse Kinematics 
+
+This repository documents **Inverse Kinematics** for one robot, it will explain the Geometrical method to get ecuations to late get a jacobian value
 
 ## Robot Description
 
