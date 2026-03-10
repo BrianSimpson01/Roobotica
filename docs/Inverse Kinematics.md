@@ -104,8 +104,6 @@ sin(θ₃) = ±√(1 − cos²(θ₃))
 
 ### Step 4 — Solve θ₂ (α − β Decomposition)
 
-θ₂ is not simply the angle from horizontal to J₁→P. Link a₃ bends at J₂ and shifts P away from where a₂ alone would point. So we split into two angles:
-
 **α** — angle from horizontal to the line J₁→P:
 ```
 α = atan2(h, r)
