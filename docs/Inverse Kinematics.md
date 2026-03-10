@@ -118,45 +118,14 @@ sin(θ₃) = ±√(1 − cos²(θ₃))
 α = atan2(h, r)
 ```
 
-> This is the angle needed if the arm were a single rigid link from J₁ to P.
-
 **β** — how much a₃'s bend shifts the direction of J₁→P away from a₂:
-```
-β = atan2(a₃·sin(θ₃), a₂ + a₃·cos(θ₃))
-```
 
-> In the frame of J₁, the vector from J₁ to P has components:
-> - Horizontal component: a₂ + a₃·cos(θ₃)
-> - Vertical component:   a₃·sin(θ₃)
->
-> β is the angle this vector makes — it is how much a₃'s bend shifts P away from a₂.
-
-Therefore a₂ must point at angle (α − β) so that after adding a₃'s bend, P is reached:
 ```
 θ₂ = α − β = atan2(h, r) − atan2(a₃·sin(θ₃), a₂ + a₃·cos(θ₃))
 ```
 
 ---
 
-### Complete IK Summary
-```
-Step 1:   θ₁ = atan2(y, x)
-
-Step 2:   r = √(x² + y²)
-          h = z − d₁
-          D = √(r² + h²)
-
-Step 3:   cos(θ₃) = (D² − a₂² − a₃²) / (2·a₂·a₃)
-          θ₃ = atan2( ±√(1 − cos²(θ₃)) , cos(θ₃) )
-
-Step 4:   α  = atan2(h, r)
-          β  = atan2(a₃·sin(θ₃), a₂ + a₃·cos(θ₃))
-          θ₂ = α − β
-
-Verify:   z  = d₁ + a₂·sin(θ₂) + a₃·sin(θ₂+θ₃)   ✓
-```
-
----
 
 ## Position Jacobian — Geometric Method (3×3)
 
@@ -176,9 +145,9 @@ Jᵥᵢ = ẑᵢ₋₁ × (pₑ − pᵢ₋₁)
 
 ### Joint Axes
 ```
-ẑ₀ = [0,    0,   1]ᵀ       — Joint 1 rotates about vertical Z
-ẑ₁ = [−s₁,  c₁,  0]ᵀ      — Joint 2 rotates about horizontal axis after θ₁
-ẑ₂ = [−s₁,  c₁,  0]ᵀ      — Joint 3 same axis as joint 2
+ẑ₀ = [0,    0,   1]ᵀ     
+ẑ₁ = [−s₁,  c₁,  0]ᵀ      
+ẑ₂ = [−s₁,  c₁,  0]ᵀ      
 ```
 
 ### Joint Positions
@@ -267,25 +236,5 @@ r   = a₂·cos(θ₂) + a₃·cos(θ₂+θ₃)
 s₂₃ = sin(θ₂+θ₃)
 c₂₃ = cos(θ₂+θ₃)
 ```
-
 ---
 
-### Physical Meaning
-```
-Row 1 → ẋ   Joint 1 swings in XY, joints 2 and 3 tilt forward in X
-Row 2 → ẏ   Same structure as X with s₁ and c₁ swapped
-Row 3 → ż   Joint 1 never affects z (first entry = 0)
-             Only joints 2 and 3 change height
-```
-
----
-
-### Singularities
-
-The Jacobian loses rank when det(Jᵥ) = 0:
-
-| Condition       | Configuration                                        |
-|-----------------|------------------------------------------------------|
-| r = 0           | a₂·cos(θ₂)+a₃·cos(θ₂+θ₃) = 0, arm over Z axis     |
-| s₂₃ = 0        | θ₂+θ₃ = 0° or 180°, links a₂ and a₃ aligned        |
-| sin(θ₃) = 0    | θ₃ = 0° or 180°, elbow fully extended or folded     |
