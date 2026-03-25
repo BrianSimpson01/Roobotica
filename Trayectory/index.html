@@ -1,0 +1,1511 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://your-robotics-repo.com/Trayectory/">
+      
+      
+        <link rel="prev" href="../Inverse%20Kinematics/">
+      
+      
+        <link rel="next" href="../URDF%20Robots/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Trajectory Planning I - Robotics Repository</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.2/css/all.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#trajectory-planning-i" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Robotics Repository" class="md-header__button md-logo" aria-label="Robotics Repository" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Robotics Repository
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Trajectory Planning I
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Robotics Repository" class="md-nav__button md-logo" aria-label="Robotics Repository" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Robotics Repository
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotics Project Repository
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercise1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application of Frame Transformations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Forward%20Kinematics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Forward Kinematics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Inverse%20Kinematics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inverse Kinematics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trajectory Planning I
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trajectory Planning I
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-analyze-a-position-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1 — Analyze a Position Graph
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 1 — Analyze a Position Graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analysis-of-labeled-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis of Labeled Points
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Conclusions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-compute-total-displacement-from-a-velocity-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2 — Compute Total Displacement from a Velocity Profile
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 2 — Compute Total Displacement from a Velocity Profile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#given-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Given Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-trapezoidal-or-triangular-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3 — Trapezoidal or Triangular Profile?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 3 — Trapezoidal or Triangular Profile?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-a-q-5-rad-v_max-2-rads-a_max-4-rads2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case a) Δq = 5 rad, v_max = 2 rad/s, a_max = 4 rad/s²
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-b-q-04-rad-v_max-2-rads-a_max-4-rads2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case b) Δq = 0.4 rad, v_max = 2 rad/s, a_max = 4 rad/s²
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-4-sketch-the-position-graph-from-a-velocity-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4 — Sketch the Position Graph from a Velocity Profile
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 4 — Sketch the Position Graph from a Velocity Profile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#velocity-segments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Velocity Segments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#position-qt-by-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Position q(t) by Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shape-of-the-position-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shape of the Position Graph
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-5-full-trapezoidal-profile-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 5 — Full Trapezoidal Profile Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 5 — Full Trapezoidal Profile Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-trapezoidal-or-triangular" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        a) Trapezoidal or Triangular?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-compute-t_a-t_c-and-t" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        b) Compute t_a, t_c, and T
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-velocity-function-qt-per-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        c) Velocity Function q̇(t) per Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-position-function-qt-per-phase-q0-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        d) Position Function q(t) per Phase (q₀ = 0)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-6-profile-design-for-fixed-total-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 6 — Profile Design for Fixed Total Time
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 6 — Profile Design for Fixed Total Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-triangular-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        a) Triangular Profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-trapezoidal-profile-t_a-05-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        b) Trapezoidal Profile (t_a = 0.5 s)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        c) Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../URDF%20Robots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    URDF Robots in RViz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../activity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Activity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../leds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Battery and LED Panel Service Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reset_counter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reset Counter Service Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rosp%26l/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ROS 2 Publisher and Subscriber Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../turtleism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Turtle Catcher Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-analyze-a-position-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1 — Analyze a Position Graph
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 1 — Analyze a Position Graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analysis-of-labeled-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis of Labeled Points
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Conclusions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-compute-total-displacement-from-a-velocity-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2 — Compute Total Displacement from a Velocity Profile
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 2 — Compute Total Displacement from a Velocity Profile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#given-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Given Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-trapezoidal-or-triangular-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3 — Trapezoidal or Triangular Profile?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 3 — Trapezoidal or Triangular Profile?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-a-q-5-rad-v_max-2-rads-a_max-4-rads2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case a) Δq = 5 rad, v_max = 2 rad/s, a_max = 4 rad/s²
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-b-q-04-rad-v_max-2-rads-a_max-4-rads2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case b) Δq = 0.4 rad, v_max = 2 rad/s, a_max = 4 rad/s²
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-4-sketch-the-position-graph-from-a-velocity-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 4 — Sketch the Position Graph from a Velocity Profile
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 4 — Sketch the Position Graph from a Velocity Profile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#velocity-segments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Velocity Segments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#position-qt-by-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Position q(t) by Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shape-of-the-position-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shape of the Position Graph
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-5-full-trapezoidal-profile-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 5 — Full Trapezoidal Profile Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 5 — Full Trapezoidal Profile Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-trapezoidal-or-triangular" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        a) Trapezoidal or Triangular?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-compute-t_a-t_c-and-t" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        b) Compute t_a, t_c, and T
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-velocity-function-qt-per-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        c) Velocity Function q̇(t) per Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-position-function-qt-per-phase-q0-0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        d) Position Function q(t) per Phase (q₀ = 0)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-6-profile-design-for-fixed-total-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 6 — Profile Design for Fixed Total Time
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 6 — Profile Design for Fixed Total Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-triangular-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        a) Triangular Profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-trapezoidal-profile-t_a-05-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        b) Trapezoidal Profile (t_a = 0.5 s)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        c) Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="trajectory-planning-i">Trajectory Planning I</h1>
+<p>This page documents the exercises on <em>joint trajectory planning</em>, covering position/velocity/acceleration graph analysis, trapezoidal and triangular velocity profiles, and the derivation of motion functions.</p>
+<hr />
+<h2 id="exercise-1-analyze-a-position-graph">Exercise 1 — Analyze a Position Graph</h2>
+<p><em>Task:</em> Given a position graph, identify: where velocity is zero, where velocity is maximum, and where acceleration is positive or negative.</p>
+<p><img alt="Exercise 1 position graph" src="../recursos/imgs/traj_ex1.jpeg" /></p>
+<h3 id="analysis-of-labeled-points">Analysis of Labeled Points</h3>
+<table>
+<thead>
+<tr>
+<th>Point</th>
+<th>Time (s)</th>
+<th>Observation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>~0.2</td>
+<td>Velocity ≈ 0 (flat segment begins)</td>
+</tr>
+<tr>
+<td>B</td>
+<td>~1.0</td>
+<td>Velocity ≈ 0 (end of flat, inflection ahead)</td>
+</tr>
+<tr>
+<td>C</td>
+<td>~2.5</td>
+<td>Velocity increasing (steep slope, approaching max)</td>
+</tr>
+<tr>
+<td>D</td>
+<td>~4.0</td>
+<td>Velocity ≈ max (steepest slope on curve)</td>
+</tr>
+<tr>
+<td>E</td>
+<td>~5.0</td>
+<td>Velocity ≈ 0 (local maximum, curve flattens)</td>
+</tr>
+<tr>
+<td>F</td>
+<td>~6.2</td>
+<td>Velocity negative / decelerating</td>
+</tr>
+<tr>
+<td>G</td>
+<td>~7.5</td>
+<td>Velocity ≈ 0 (curve flattens again)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-conclusions">Key Conclusions</h3>
+<ul>
+<li><em>Velocity = 0</em> at points <em>A–B</em> (flat region) and at <em>E</em> and <em>G</em> (local extrema).</li>
+<li><em>Velocity is maximum</em> near point <em>D</em>, where the slope of the position curve is steepest.</li>
+<li><em>Acceleration &gt; 0</em> (concave up) between B and D — the curve bends upward.</li>
+<li><em>Acceleration &lt; 0</em> (concave down) between D and F — the curve bends downward.</li>
+<li><em>Acceleration ≈ 0</em> at inflection points (D and the transitions between concave regions).</li>
+</ul>
+<hr />
+<h2 id="exercise-2-compute-total-displacement-from-a-velocity-profile">Exercise 2 — Compute Total Displacement from a Velocity Profile</h2>
+<p><em>Task:</em> Given a trapezoidal velocity graph, compute total displacement Δq from the area under the curve.</p>
+<p><img alt="Exercise 2 velocity profile" src="../recursos/imgs/traj_ex2.jpeg" /></p>
+<h3 id="given-values">Given Values</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v_max</td>
+<td>0.8 rad/s</td>
+</tr>
+<tr>
+<td>t_a (acceleration phase)</td>
+<td>0.5 s</td>
+</tr>
+<tr>
+<td>t_c (constant phase)</td>
+<td>2.0 s</td>
+</tr>
+<tr>
+<td>t_a (deceleration phase)</td>
+<td>0.5 s</td>
+</tr>
+<tr>
+<td>Total time T</td>
+<td>3.0 s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="solution">Solution</h3>
+<p>The displacement equals the area of the trapezoid:</p>
+<p>Δq = ½ · v_max · t_a  +  v_max · t_c  +  ½ · v_max · t_a</p>
+<p>Δq = ½ · (0.8)(0.5)  +  (0.8)(2.0)  +  ½ · (0.8)(0.5)</p>
+<p>Δq = 0.2 + 1.6 + 0.2</p>
+<p>Δq = 2.0 rad</p>
+<p>Or equivalently using the trapezoid area formula:</p>
+<p>Δq = v_max · (t_c + t_a) = 0.8 · (2.0 + 0.5) = 2.0 rad</p>
+<blockquote>
+<p><em>Result: Δq = 2.0 rad</em></p>
+</blockquote>
+<hr />
+<h2 id="exercise-3-trapezoidal-or-triangular-profile">Exercise 3 — Trapezoidal or Triangular Profile?</h2>
+<p><em>Task:</em> Given Δq, v_max, and a_max, determine whether the motion is trapezoidal or triangular.</p>
+<h3 id="method">Method</h3>
+<p>Compute the minimum displacement required to reach v_max:</p>
+<p>Δq_min = v_max² / a_max</p>
+<ul>
+<li>If <em>Δq ≥ Δq_min</em> → <em>Trapezoidal</em> (the profile reaches v_max)</li>
+<li>If <em>Δq &lt; Δq_min</em> → <em>Triangular</em> (v_max is never reached)</li>
+</ul>
+<hr />
+<h3 id="case-a-q-5-rad-v_max-2-rads-a_max-4-rads2">Case a) Δq = 5 rad, v_max = 2 rad/s, a_max = 4 rad/s²</h3>
+<p>Δq_min = (2)² / 4 = 4 / 4 = 1.0 rad</p>
+<p>Δq = 5 rad  ≥  Δq_min = 1.0 rad</p>
+<blockquote>
+<p><em>→ Trapezoidal profile</em></p>
+</blockquote>
+<hr />
+<h3 id="case-b-q-04-rad-v_max-2-rads-a_max-4-rads2">Case b) Δq = 0.4 rad, v_max = 2 rad/s, a_max = 4 rad/s²</h3>
+<p>Δq_min = (2)² / 4 = 1.0 rad</p>
+<p>Δq = 0.4 rad  &lt;  Δq_min = 1.0 rad</p>
+<blockquote>
+<p><em>→ Triangular profile</em> (the joint cannot reach v_max in the available displacement)</p>
+</blockquote>
+<hr />
+<h2 id="exercise-4-sketch-the-position-graph-from-a-velocity-profile">Exercise 4 — Sketch the Position Graph from a Velocity Profile</h2>
+<p><em>Task:</em> Given the velocity profile below, sketch the position graph q(t), assuming q(0) = 0.</p>
+<p><img alt="Exercise 4 velocity profile" src="../recursos/imgs/traj_ex4.jpeg" /></p>
+<h3 id="velocity-segments">Velocity Segments</h3>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Time Interval</th>
+<th>Velocity Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I</td>
+<td>0 – 1 s</td>
+<td>Ramp up: 0 → 0.6 rad/s</td>
+</tr>
+<tr>
+<td>II</td>
+<td>1 – 3 s</td>
+<td>Constant: 0.6 rad/s</td>
+</tr>
+<tr>
+<td>III</td>
+<td>3 – 4 s</td>
+<td>Ramp down: 0.6 → 0 rad/s</td>
+</tr>
+<tr>
+<td>IV</td>
+<td>4 – 5 s</td>
+<td>Zero velocity</td>
+</tr>
+<tr>
+<td>V</td>
+<td>5 – 6 s</td>
+<td>Ramp down: 0 → −0.4 rad/s</td>
+</tr>
+<tr>
+<td>VI</td>
+<td>6 – 7 s</td>
+<td>Constant: −0.4 rad/s</td>
+</tr>
+<tr>
+<td>VII</td>
+<td>7 – 8 s</td>
+<td>Ramp up: −0.4 → 0 rad/s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="position-qt-by-integration">Position q(t) by Integration</h3>
+<p>Phase I   (0–1s):   q(t) = ½ · 0.6 · t²  →  q(1) = 0.3 rad</p>
+<p>Phase II  (1–3s):   q(t) = 0.3 + 0.6·(t−1)  →  q(3) = 0.3 + 1.2 = 1.5 rad</p>
+<p>Phase III (3–4s):   q(t) = 1.5 + 0.6·(t−3) − ½·0.6·(t−3)²  →  q(4) = 1.5 + 0.3 = 1.8 rad</p>
+<p>Phase IV  (4–5s):   q(t) = 1.8  (constant)</p>
+<p>Phase V   (5–6s):   q(t) = 1.8 − ½·0.4·(t−5)²  →  q(6) = 1.8 − 0.2 = 1.6 rad</p>
+<p>Phase VI  (6–7s):   q(t) = 1.6 − 0.4·(t−6)  →  q(7) = 1.6 − 0.4 = 1.2 rad</p>
+<p>Phase VII (7–8s):   q(t) = 1.2 − 0.4·(t−7) + ½·0.4·(t−7)²  →  q(8) = 1.2 − 0.2 = 1.0 rad</p>
+<h3 id="shape-of-the-position-graph">Shape of the Position Graph</h3>
+<p><img alt="Exercise 4 velocity profile" src="../recursos/imgs/traj_ex4.1.jpeg" /></p>
+<hr />
+<h2 id="exercise-5-full-trapezoidal-profile-design">Exercise 5 — Full Trapezoidal Profile Design</h2>
+<p><em>Given:</em> Δq = 2 rad, v_max = 1 rad/s, a_max = 4 rad/s²</p>
+<h3 id="a-trapezoidal-or-triangular">a) Trapezoidal or Triangular?</h3>
+<p>Δq_min = v_max² / a_max = (1)² / 4 = 0.25 rad</p>
+<p>Δq = 2 rad  ≥  0.25 rad</p>
+<blockquote>
+<p><em>→ Trapezoidal profile</em></p>
+</blockquote>
+<h3 id="b-compute-t_a-t_c-and-t">b) Compute t_a, t_c, and T</h3>
+<p>t_a = v_max / a_max = 1 / 4 = 0.25 s</p>
+<p>t_c = (Δq − v_max · t_a) / v_max
+    = (2 − 1 · 0.25) / 1
+    = 1.75 s</p>
+<p>T = 2·t_a + t_c = 2·(0.25) + 1.75 = 2.25 s</p>
+<h3 id="c-velocity-function-qt-per-phase">c) Velocity Function q̇(t) per Phase</h3>
+<p>Acceleration phase   (0 ≤ t ≤ t_a):
+    q̇(t) = a_max · t = 4t</p>
+<p>Constant phase       (t_a ≤ t ≤ t_a + t_c):
+    q̇(t) = v_max = 1 rad/s</p>
+<p>Deceleration phase   (t_a + t_c ≤ t ≤ T):
+    q̇(t) = v_max − a_max · (t − (t_a + t_c))
+           = 1 − 4·(t − 2.0)</p>
+<h3 id="d-position-function-qt-per-phase-q0-0">d) Position Function q(t) per Phase (q₀ = 0)</h3>
+<p>Acceleration phase   (0 ≤ t ≤ 0.25):
+    q(t) = ½ · a_max · t² = 2t²</p>
+<p>Constant phase       (0.25 ≤ t ≤ 2.0):
+    q(t) = q(t_a) + v_max·(t − t_a)
+         = 0.03125 + 1·(t − 0.25)</p>
+<p>Deceleration phase   (2.0 ≤ t ≤ 2.25):
+    q(t) = q(t_a + t_c) + v_max·(t−2.0) − ½·a_max·(t−2.0)²
+         = 1.78125 + (t−2.0) − 2·(t−2.0)²</p>
+<hr />
+<h2 id="exercise-6-profile-design-for-fixed-total-time">Exercise 6 — Profile Design for Fixed Total Time</h2>
+<p><em>Given:</em> Δq = 3 rad, T = 3 s</p>
+<h3 id="a-triangular-profile">a) Triangular Profile</h3>
+<p>For a triangular profile, the motion accelerates to a peak velocity v_p then immediately decelerates:</p>
+<p>T = 2 · t_a   →   t_a = T/2 = 1.5 s</p>
+<p>Δq = ½ · v_p · T
+v_p = 2·Δq / T = 2·3 / 3 = 2 rad/s</p>
+<p>a = v_p / t_a = 2 / 1.5 = 4/3 ≈ 1.333 rad/s²</p>
+<blockquote>
+<p><em>Triangular:</em> v_p = 2 rad/s, a = 1.333 rad/s²</p>
+</blockquote>
+<h3 id="b-trapezoidal-profile-t_a-05-s">b) Trapezoidal Profile (t_a = 0.5 s)</h3>
+<p>t_c = T − 2·t_a = 3 − 2·(0.5) = 2.0 s</p>
+<p>Δq = v_max·(t_c + t_a)
+v_max = Δq / (t_c + t_a) = 3 / (2.0 + 0.5) = 1.2 rad/s</p>
+<p>a_max = v_max / t_a = 1.2 / 0.5 = 2.4 rad/s²</p>
+<blockquote>
+<p><em>Trapezoidal:</em> v_max = 1.2 rad/s, a_max = 2.4 rad/s²</p>
+</blockquote>
+<h3 id="c-comparison">c) Comparison</h3>
+<table>
+<thead>
+<tr>
+<th>Profile</th>
+<th>Peak Velocity</th>
+<th>Peak Acceleration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Triangular</td>
+<td>2.0 rad/s</td>
+<td>1.333 rad/s²</td>
+</tr>
+<tr>
+<td>Trapezoidal</td>
+<td>1.2 rad/s</td>
+<td>2.4 rad/s²</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><em>The triangular profile is gentler on the motor</em> because it requires a lower peak acceleration (1.333 vs 2.4 rad/s²). Lower acceleration means lower peak torque demand, reducing mechanical stress and wear on the actuator.</p>
+</blockquote>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "content.tooltips"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
