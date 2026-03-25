@@ -8,7 +8,7 @@ This page documents the exercises on *joint trajectory planning*, covering posit
 
 *Task:* Given a position graph, identify: where velocity is zero, where velocity is maximum, and where acceleration is positive or negative.
 
-![Exercise 1 position graph](recursos/imgs/traj_ex1.png)
+![Exercise 1 position graph](recursos/imgs/traj_ex1.jpeg)
 
 ### Analysis of Labeled Points
 
@@ -36,7 +36,7 @@ This page documents the exercises on *joint trajectory planning*, covering posit
 
 *Task:* Given a trapezoidal velocity graph, compute total displacement Δq from the area under the curve.
 
-![Exercise 2 velocity profile](recursos/imgs/traj_ex2.png)
+![Exercise 2 velocity profile](recursos/imgs/traj_ex2.jpeg)
 
 ### Given Values
 
@@ -117,7 +117,7 @@ Compute the minimum displacement required to reach v_max:
 
 *Task:* Given the velocity profile below, sketch the position graph q(t), assuming q(0) = 0.
 
-![Exercise 4 velocity profile](recursos/imgs/traj_ex4.png)
+![Exercise 4 velocity profile](recursos/imgs/traj_ex4.jpeg)
 
 ### Velocity Segments
 
@@ -149,11 +149,10 @@ Phase VI  (6–7s):   q(t) = 1.6 − 0.4·(t−6)  →  q(7) = 1.6 − 0.4 = 1.2
 Phase VII (7–8s):   q(t) = 1.2 − 0.4·(t−7) + ½·0.4·(t−7)²  →  q(8) = 1.2 − 0.2 = 1.0 rad
 
 
+
 ### Shape of the Position Graph
 
-- Phases I–III: *concave up → linear → concave down* (forward motion, increasing position)
-- Phase IV: *horizontal* (no movement)
-- Phases V–VII: *concave down → linear → concave up* (backward motion, decreasing position)
+![Exercise 4 velocity profile](recursos/imgs/traj_ex4.1.jpeg)
 
 -----
 
